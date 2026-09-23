@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace Clinica_odontologia.Models01
 {
+    [Table("odontologos")]
+
     public class Odontologo
     {
         [Key]

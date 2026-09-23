@@ -16,17 +16,17 @@ namespace Clinica_odontologia.Models01
         public int Id_cita { get; set; }
 
         [Required]
-        [Column ("fecha_cita", TypeName = "day")]
+        [Column ("fecha_cita", TypeName = "timestamp without time zone")]
         public DateOnly Fecha_cita { get; set; }
 
         [Required]
         [MaxLength(20)]
-        [Column ("motivo", TypeName ="string")]
+        [Column ("motivo", TypeName = "varchar")]
         public string Motivo {  get; set; }
 
         [Required]
         [MaxLength(20)]
-        [Column ("estado_cita", TypeName = "string")]
+        [Column ("estado_cita", TypeName = "varchar")]
         public string Estado_cita { get; set; }
 
         // Llaves foraneas
