@@ -17,13 +17,15 @@ namespace Clinica_odontologia.Models01
 
         [Required]
         [Column ("fecha_cita", TypeName = "day")]
-        public TimeOnly Fecha_cita { get; set; }
+        public DateOnly Fecha_cita { get; set; }
 
         [Required]
-        [Column ("motivo", TypeName ="text")]
+        [MaxLength(20)]
+        [Column ("motivo", TypeName ="string")]
         public string Motivo {  get; set; }
 
         [Required]
+        [MaxLength(20)]
         [Column ("estado_cita", TypeName = "string")]
         public string Estado_cita { get; set; }
 
