@@ -21,7 +21,7 @@ namespace Clinica_odontologia.Models01
 
         [Required]
         [MaxLength(200)]
-        [Column("observaciones", TypeName ="varchar")]
+        [Column("observaciones")]
         public string Observaciones { get; set; }
 
         // Llaves foraneas

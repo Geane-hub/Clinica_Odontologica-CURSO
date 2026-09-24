@@ -16,11 +16,11 @@ namespace Clinica_odontologia.Models01
         public int IdReceta { get; set; }
 
         [Required]
-        [Column ("fecha_emision", TypeName = "timestamp without time zone")]
+        [Column ("fecha_emision", TypeName = "timestamp")]
         public DateTime Fecha_emision { get; set; }
 
         [Required]
-        [Column("indicaciones", TypeName = "text")]
+        [Column("indicaciones")]
         public string Indicaciones { get; set; }
 
         //llave foranea

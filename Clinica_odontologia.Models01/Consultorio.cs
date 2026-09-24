@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Clinica_odontologia.Models01
 {
-    [Table("consultorios", Schema = "public")]
+    [Table("consultorios")]
     public class Consultorio
     {
         [Key]
@@ -24,5 +24,8 @@ namespace Clinica_odontologia.Models01
         [MaxLength(100)]
         [Column("equipamiento_principal")]
         public string EquipamientoPrincipal { get; set; }
+
+        //relaciones (consultorios tiene una lista de citas)
+        List<Citas>? Citas { get; set; } = new List<Citas>();
     }
 }

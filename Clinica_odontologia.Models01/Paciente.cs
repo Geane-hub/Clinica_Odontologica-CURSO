@@ -39,5 +39,7 @@ namespace Clinica_odontologia.Models01
         [MaxLength(10)]
         [Column("telefono")]
         public string Telefono { get; set; }
+
+        List<Citas> Citas { get; set; } = new List<Citas>();
     }
 }

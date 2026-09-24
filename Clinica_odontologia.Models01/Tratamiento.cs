@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Clinica_odontologia.Models01
 {
-    [Table("tratamientos", Schema = "public")]
+    [Table("tratamientos")]
     public class Tratamiento
     {
         [Key]
@@ -21,7 +21,10 @@ namespace Clinica_odontologia.Models01
         public decimal CostoBase { get; set; }
 
         [Required]
-        [Column("duracion_estimada_minutos")]
+        [Column("duracion_estimada_minutos", TypeName = "timespm")]
         public int DuracionEstimadaMinutos { get; set; }
+
+        //relaciones
+        List<Detallescita>? Detallescitas { get; set; } = new List<Detallescita>();
     }
 }

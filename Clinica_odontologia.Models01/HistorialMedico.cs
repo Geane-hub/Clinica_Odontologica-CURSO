@@ -9,11 +9,11 @@ using System.Xml.Serialization;
 
 namespace Clinica_odontologia.Models01
 {
-    [Table("historialesmedico", Schema = "public" )]
-    internal class HistorialMedico
+    [Table("historialesmedico")]
+    public class HistorialMedico
     {
         [Key]
-        [Column("id_historial")]
+        [Column("id_historial", TypeName = "serial")]
         public int idHistorialMedico { get; set; }
 
         [Required]

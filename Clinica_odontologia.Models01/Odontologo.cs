@@ -18,24 +18,26 @@ namespace Clinica_odontologia.Models01
 
         [Required]
         [MaxLength (50)]
-        [Column("nombres", TypeName = "string")]
+        [Column("nombres")]
 
         public string Nombre { get; set; }
 
         [Required]
         [MaxLength(50)]
-        [Column("apellidos", TypeName = "string")]
+        [Column("apellidos")]
         public string Apellido { get; set; }
 
         [Required]
         [MaxLength(20)]
-        [Column("registro_medico", TypeName = "string")]
+        [Column("registro_medico")]
         public string Registro_medico { get; set; }
 
         [ForeignKey("especialidad")]
         [Column("id_especialidad")]
         public int IdEspecialidad { get; set; }
         public Especialidad? especialidad { get; set; }
+
+        List<Citas>? Citas { get; set; } = new List<Citas>();
 
     }
 }

@@ -16,7 +16,7 @@ namespace Clinica_odontologia.Models01
         public int IdFactura { get; set; }
 
         [Required]
-        [Column("fecha_emision", TypeName = "timestamp without time zone")]
+        [Column("fecha_emision", TypeName = "timestamp")]
         public DateTime Fecha_emision { get; set; }
 
         [Required]
@@ -34,7 +34,6 @@ namespace Clinica_odontologia.Models01
         [Required]
         [Column("estado_pago")]
         [MaxLength(20)]
-
         public string Estado_pago { get; set; }
 
         //llave foranea

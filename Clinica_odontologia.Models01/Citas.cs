@@ -16,17 +16,17 @@ namespace Clinica_odontologia.Models01
         public int Id_cita { get; set; }
 
         [Required]
-        [Column ("fecha_cita", TypeName = "timestamp without time zone")]
+        [Column ("fecha_cita", TypeName = "timestamp")]
         public DateOnly Fecha_cita { get; set; }
 
         [Required]
         [MaxLength(20)]
-        [Column ("motivo", TypeName = "varchar")]
+        [Column ("motivo")]
         public string Motivo {  get; set; }
 
         [Required]
         [MaxLength(20)]
-        [Column ("estado_cita", TypeName = "varchar")]
+        [Column ("estado_cita")]
         public string Estado_cita { get; set; }
 
         // Llaves foraneas
@@ -44,5 +44,9 @@ namespace Clinica_odontologia.Models01
         [Column ("id_consultorio")]
         public int IdConsultorio { get; set; }
         public Consultorio? consultorio { get; set; }
+
+        //relaciones
+        List<Detallescita> Detallescitas { get; set; } = new List<Detallescita>();
+        List<Receta>? Recetas { get; set; } = new List<Receta>();
     }
 }
