@@ -12,14 +12,14 @@ public class CitasController : ControllerBase
         _context = context;
     }
 
-    // GET: api/Citas
+    // GET: api/Citas (obtener todos los datos dentro de la tabla de bases)
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Citas>>> GetCitas()
     {
         return await _context.Citas.ToListAsync();
     }
 
-    // GET: api/Citas/5
+    // GET: api/Citas/5 (traee datos especificos)
     [HttpGet("{id_cita}")]
     public async Task<ActionResult<Citas>> GetCitas(int id_cita)
     {

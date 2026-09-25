@@ -12,12 +12,12 @@ namespace Clinica_odontologia.Models01
     public class Citas
     {
         [Key]
-        [Column ("id_cita", TypeName = "serial")]
+        [Column ("id_cita")]
         public int Id_cita { get; set; }
 
         [Required]
         [Column ("fecha_cita", TypeName = "timestamp")]
-        public DateOnly Fecha_cita { get; set; }
+        public DateTime Fecha_cita { get; set; }
 
         [Required]
         [MaxLength(20)]

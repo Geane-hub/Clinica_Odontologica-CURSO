@@ -13,7 +13,7 @@ namespace Clinica_odontologia.Models01
     public class Odontologo
     {
         [Key]
-        [Column ("id_odontologo", TypeName = "Serial")]
+        [Column ("id_odontologo")]
         public int IdOdontologo { get; set; }
 
         [Required]

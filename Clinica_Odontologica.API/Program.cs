@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-
 namespace Clinica_Odontologica.API
 {
     public class Program
@@ -7,7 +6,7 @@ namespace Clinica_Odontologica.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            var connectionString = builder.Configuration.GetConnectionString("Clinica_OdontologicaAPIContext") ?? throw new InvalidOperationException("Connection string 'Clinica_OdontologicaAPIContext' not found.");
+            var connectionString = builder.Configuration.GetConnectionString("Postgres") ?? throw new InvalidOperationException("Connection string 'Clinica_OdontologicaAPIContext' not found.");
 
             builder.Services.AddDbContext<Clinica_OdontologicaAPIContext>(options => options.UseNpgsql(connectionString));
 
@@ -21,11 +20,11 @@ namespace Clinica_Odontologica.API
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
+            //if (app.Environment.IsDevelopment())
+            //{
                 app.UseSwagger();
                 app.UseSwaggerUI();
-            }
+            //}
 
             app.UseHttpsRedirection();
 

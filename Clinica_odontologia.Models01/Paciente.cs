@@ -8,7 +8,7 @@ namespace Clinica_odontologia.Models01
     public class Paciente
     {
         [Key]
-        [Column("id_paciente", TypeName = "serial")]
+        [Column("id_paciente")]
         public int IdPaciente { get; set; }
 
         [Required]

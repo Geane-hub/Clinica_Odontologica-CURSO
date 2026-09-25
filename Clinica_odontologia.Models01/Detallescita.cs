@@ -12,7 +12,7 @@ namespace Clinica_odontologia.Models01
     public class Detallescita
     {
         [Key]
-        [Column ("id_detalle_cita", TypeName = "Serial")]
+        [Column ("id_detalle_cita")]
         public int IdDetallecita { get; set; }
 
         [Required]

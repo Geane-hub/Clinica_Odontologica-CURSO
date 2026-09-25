@@ -8,7 +8,7 @@ namespace Clinica_odontologia.Models01
     public class Especialidad
     {
         [Key]
-        [Column("id_especialidad")] 
+        [Column("id_especialidad")]
         public int IdEspecialidad { get; set; }
 
         [Required]

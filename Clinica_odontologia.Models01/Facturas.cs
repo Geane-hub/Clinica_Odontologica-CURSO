@@ -12,7 +12,7 @@ namespace Clinica_odontologia.Models01
     public class Facturas
     {
         [Key]
-        [Column("id_facturas", TypeName = "serial")]
+        [Column("id_facturas")]
         public int IdFactura { get; set; }
 
         [Required]
