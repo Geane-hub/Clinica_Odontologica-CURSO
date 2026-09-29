@@ -13,10 +13,10 @@ public class DetallescitaController : Controller
     }
 
     // GET: CONSULTORIO/Details/5
-    public IActionResult Details(int id_detallescita)
+    public IActionResult Details(int id)
     {
-        var consultorio = CRUD<Detallescita>.GetById(id_detallescita);
-        if (id_detallescita == null)
+        var consultorio = CRUD<Detallescita>.GetById(id);
+        if (id == null)
         {
             return NotFound();
         }
@@ -50,9 +50,9 @@ public class DetallescitaController : Controller
     }
 
     // GET: CONSULTORIO/Edit/5
-    public ActionResult Edit(int id_detallescita)
+    public ActionResult Edit(int id)
     {
-        var consultorio = CRUD<Detallescita>.GetById(id_detallescita);
+        var consultorio = CRUD<Detallescita>.GetById(id);
         if (consultorio == null)
         {
             return NotFound();
@@ -65,11 +65,11 @@ public class DetallescitaController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id_detallescita, Detallescita detallescita)
+    public ActionResult Edit(int id, Detallescita detallescita)
     {
         try
         {
-            CRUD<Detallescita>.Update(id_detallescita, detallescita);
+            CRUD<Detallescita>.Update(id, detallescita);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
@@ -80,9 +80,9 @@ public class DetallescitaController : Controller
     }
 
     // GET: CONSULTORIO/Delete/5
-    public ActionResult Delete(int id_detallescita)
+    public ActionResult Delete(int id)
     {
-        var detallescita = CRUD<Detallescita>.GetById(id_detallescita);
+        var detallescita = CRUD<Detallescita>.GetById(id);
         if (detallescita == null)
         {
             return NotFound();
@@ -93,11 +93,11 @@ public class DetallescitaController : Controller
     // POST: CONSULTORIO/Delete/5
     [HttpPost, ActionName("Delete")] //referencia a .net que finja que ese metodo es DELETE 
     [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id_detallescita, Detallescita detallescita)
+    public ActionResult Delete(int id, Detallescita detallescita)
     {
         try
         {
-            CRUD<Detallescita>.Delete(id_detallescita);
+            CRUD<Detallescita>.Delete(id);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
