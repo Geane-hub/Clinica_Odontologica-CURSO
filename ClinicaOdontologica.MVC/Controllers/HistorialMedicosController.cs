@@ -12,9 +12,9 @@ public class HistorialMedicoController : Controller
     }
 
     // GET: HistorialMedico/Details/5
-    public IActionResult Details(int id_historialmedico)
+    public IActionResult Details(int id)
     {
-        var historialMedico = CRUD<HistorialMedico>.GetById(id_historialmedico);
+        var historialMedico = CRUD<HistorialMedico>.GetById(id);
         if (historialMedico == null)
         {
             return NotFound();
@@ -46,9 +46,9 @@ public class HistorialMedicoController : Controller
     }
 
     // GET: HistorialMedico/Edit/5
-    public ActionResult Edit(int id_historialmedico)
+    public ActionResult Edit(int id)
     {
-        var historialMedico = CRUD<HistorialMedico>.GetById(id_historialmedico);
+        var historialMedico = CRUD<HistorialMedico>.GetById(id);
         if (historialMedico == null)
         {
             return NotFound();
@@ -59,11 +59,11 @@ public class HistorialMedicoController : Controller
     // POST: HistorialMedico/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id_historialmedico, HistorialMedico historialMedico)
+    public ActionResult Edit(int id, HistorialMedico historialMedico)
     {
         try
         {
-            CRUD<HistorialMedico>.Update(id_historialmedico, historialMedico);
+            CRUD<HistorialMedico>.Update(id, historialMedico);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
@@ -87,11 +87,11 @@ public class HistorialMedicoController : Controller
     // POST: HistorialMedico/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id_historialmedico, HistorialMedico historialMedico)
+    public ActionResult Delete(int id, HistorialMedico historialMedico)
     {
         try
         {
-            CRUD<HistorialMedico>.Delete(id_historialmedico);
+            CRUD<HistorialMedico>.Delete(id);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
