@@ -1,45 +1,50 @@
 @model Clinica_odontologia.Models01.Consultorio
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles del Consultorio";
 }
 
-<h1>Details</h1>
+<h1>Detalles del Consultorio</h1>
 
 <div>
-    <h4>Consultorio</h4>
+    <h4>Información del consultorio</h4>
     <hr />
+
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NumeroSala)
+
+        <dt class="col-sm-2">
+            Número de sala
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NumeroSala)
+        <dd class="col-sm-10">
+            @Model.NumeroSala
         </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Piso)
+
+        <dt class="col-sm-2">
+            Piso
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Piso)
+        <dd class="col-sm-10">
+            @Model.Piso
         </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EquipamientoPrincipal)
+
+        <dt class="col-sm-2">
+            Equipamiento principal
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EquipamientoPrincipal)
+        <dd class="col-sm-10">
+            @Model.EquipamientoPrincipal
         </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Citas)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Citas)
-        </dd>
+
     </dl>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.IdConsultorio">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit"
+       asp-route-id="@Model?.IdConsultorio"
+       class="btn btn-primary">
+        Editar
+    </a>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Volver a la lista
+    </a>
 </div>

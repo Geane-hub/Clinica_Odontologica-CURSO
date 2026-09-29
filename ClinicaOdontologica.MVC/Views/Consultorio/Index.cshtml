@@ -1,53 +1,64 @@
 @model IEnumerable<Clinica_odontologia.Models01.Consultorio>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Gestión de Consultorios";
 }
 
-<h1>Index</h1>
+<h1>Gestión de Consultorios</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">
+        Crear nuevo consultorio
+    </a>
 </p>
-<table class="table">
-    <thead>
+
+<table class="table table-striped table-hover align-middle">
+
+    <thead class="table-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NumeroSala)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Piso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EquipamientoPrincipal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Citas)
-            </th>
-            <th></th>
+            <th>Número de sala</th>
+            <th>Piso</th>
+            <th>Equipamiento principal</th>
+            <th>Acciones</th>
         </tr>
     </thead>
+
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(model => item.NumeroSala)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Piso)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.EquipamientoPrincipal)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Citas)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdConsultorio">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdConsultorio">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdConsultorio">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @item.NumeroSala
+                </td>
+
+                <td>
+                    @item.Piso
+                </td>
+
+                <td>
+                    @item.EquipamientoPrincipal
+                </td>
+
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@item.IdConsultorio">
+                        Editar
+                    </a>
+                    |
+                    <a asp-action="Details"
+                       asp-route-id="@item.IdConsultorio">
+                        Detalles
+                    </a>
+                    |
+                    <a asp-action="Delete"
+                       asp-route-id="@item.IdConsultorio">
+                        Eliminar
+                    </a>
+                </td>
+
+            </tr>
+        }
     </tbody>
+
 </table>
