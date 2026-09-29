@@ -15,10 +15,10 @@ public class CitasController : Controller
     }
 
     // GET: CITASS/Details/5
-    public IActionResult Details(int id_cita)
+    public IActionResult Details(int id)
     {
-        var cita = CRUD < Citas > .GetById(id_cita);
-        if (id_cita == null)
+        var cita = CRUD < Citas > .GetById(id);
+        if (id == null)
         {
             return NotFound();
         }
@@ -52,9 +52,9 @@ public class CitasController : Controller
     }
 
     // GET: CITASS/Edit/5
-    public ActionResult Edit(int id_cita)
+    public ActionResult Edit(int id)
     {
-        var cita = CRUD < Citas > .GetById(id_cita);
+        var cita = CRUD < Citas > .GetById(id);
         if(cita == null)
         {
             return NotFound();
@@ -67,11 +67,11 @@ public class CitasController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id_cita, Citas citas)
+    public ActionResult Edit(int id, Citas citas)
     {
         try
         {
-            CRUD<Citas>.Update(id_cita,citas);
+            CRUD<Citas>.Update(id,citas);
             return RedirectToAction(nameof (Index));
         }
         catch (Exception ex)
@@ -82,9 +82,9 @@ public class CitasController : Controller
     }
 
     // GET: CITASS/Delete/5
-    public ActionResult Delete(int id_cita)
+    public ActionResult Delete(int id)
     {
-        var citas = CRUD<Citas>.GetById(id_cita);
+        var citas = CRUD<Citas>.GetById(id);
         if(citas == null)
         {
             return NotFound();
@@ -95,11 +95,11 @@ public class CitasController : Controller
     // POST: CITASS/Delete/5
     [HttpPost, ActionName("Delete")] //referencia a .net que finja que ese metodo es DELETE 
     [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id_cita, Citas citas)
+    public ActionResult Delete(int id, Citas citas)
     {
         try
         {
-            CRUD<Citas>.Delete(id_cita);
+            CRUD<Citas>.Delete(id);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex){
