@@ -13,10 +13,10 @@ public class ConsultorioController : Controller
     }
 
     // GET: CONSULTORIO/Details/5
-    public IActionResult Details(int id_consultorio)
+    public IActionResult Details(int id)
     {
-        var consultorio = CRUD<Consultorio>.GetById(id_consultorio);
-        if (id_consultorio == null)
+        var consultorio = CRUD<Consultorio>.GetById(id);
+        if (id == null)
         {
             return NotFound();
         }
@@ -50,9 +50,9 @@ public class ConsultorioController : Controller
     }
 
     // GET: CONSULTORIO/Edit/5
-    public ActionResult Edit(int id_consultorio)
+    public ActionResult Edit(int id)
     {
-        var consultorio = CRUD<Consultorio>.GetById(id_consultorio);
+        var consultorio = CRUD<Consultorio>.GetById(id);
         if (consultorio == null)
         {
             return NotFound();
@@ -65,11 +65,11 @@ public class ConsultorioController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id_consultorio, Consultorio consultorio)
+    public ActionResult Edit(int id, Consultorio consultorio)
     {
         try
         {
-            CRUD<Consultorio>.Update(id_consultorio,consultorio);
+            CRUD<Consultorio>.Update(id,consultorio);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
@@ -80,9 +80,9 @@ public class ConsultorioController : Controller
     }
 
     // GET: CONSULTORIO/Delete/5
-    public ActionResult Delete(int id_consultorio)
+    public ActionResult Delete(int id)
     {
-        var consultorio = CRUD<Consultorio>.GetById(id_consultorio);
+        var consultorio = CRUD<Consultorio>.GetById(id);
         if (consultorio == null)
         {
             return NotFound();
@@ -93,11 +93,11 @@ public class ConsultorioController : Controller
     // POST: CONSULTORIO/Delete/5
     [HttpPost, ActionName("Delete")] //referencia a .net que finja que ese metodo es DELETE 
     [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id_consultorio, Consultorio consultorio)
+    public ActionResult Delete(int id, Consultorio consultorio)
     {
         try
         {
-            CRUD<Consultorio>.Delete(id_consultorio);
+            CRUD<Consultorio>.Delete(id);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
