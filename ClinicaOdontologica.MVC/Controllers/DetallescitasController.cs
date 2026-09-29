@@ -5,10 +5,19 @@ using Clinica_odontologia.Models01;
 
 public class DetallescitaController : Controller
 {
-    // GET: CONSULTORIO
+    // GET: Detallescitas
     public ActionResult Index()
     {
         var detallescitas = CRUD<Detallescita>.GetAll();
+
+        var tratamientos = CRUD<Tratamiento>.GetAll();
+
+        foreach (var detallescita in detallescitas)
+        {
+            detallescita.Tratamiento = tratamientos
+                .FirstOrDefault(t => t.IdTratamiento == detallescita.IdTratimiento);
+        }
+
         return View(detallescitas);
     }
 

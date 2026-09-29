@@ -1,60 +1,79 @@
 @model Clinica_odontologia.Models01.Detallescita
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear detalle de cita";
 }
 
-<h1>Create</h1>
+<h1>Crear detalle de cita</h1>
 
-<h4>Detallescita</h4>
+<h4>Detalle de cita</h4>
 <hr />
+
 <div class="row">
     <div class="col-md-4">
+
         <form asp-action="Create">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+            <!-- TRATAMIENTO -->
             <div class="form-group">
-                <label asp-for="Costo_aplicado" class="control-label"></label>
-                <input asp-for="Costo_aplicado" class="form-control" />
-                <span asp-validation-for="Costo_aplicado" class="text-danger"></span>
+                <label asp-for="IdTratimiento" class="control-label">
+                    Tratamiento
+                </label>
+
+                <select asp-for="IdTratimiento"
+                        class="form-control"
+                        asp-items="ViewBag.IdTratimiento">
+
+                    <option value="">Seleccione el tratamiento</option>
+
+                </select>
+
+                <span asp-validation-for="IdTratimiento"
+                      class="text-danger"></span>
             </div>
 
+            <!-- COSTO -->
             <div class="form-group">
-                <label asp-for="Observaciones" class="control-label"></label>
-                <input asp-for="Observaciones" class="form-control" />
-                <span asp-validation-for="Observaciones" class="text-danger"></span>
+                <label asp-for="Costo_aplicado" class="control-label">
+                    Costo
+                </label>
+
+                <input asp-for="Costo_aplicado"
+                       type="number"
+                       step="0.01"
+                       min="0"
+                       class="form-control" />
+
+                <span asp-validation-for="Costo_aplicado"
+                      class="text-danger"></span>
             </div>
 
+            <!-- OBSERVACIONES -->
             <div class="form-group">
-                <label asp-for="IdCita" class="control-label"></label>
-                <input asp-for="IdCita" class="form-control" />
-                <span asp-validation-for="IdCita" class="text-danger"></span>
+                <label asp-for="Observaciones" class="control-label">
+                    Observaciones
+                </label>
+
+                <textarea asp-for="Observaciones"
+                          class="form-control"></textarea>
+
+                <span asp-validation-for="Observaciones"
+                      class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="citas" class="control-label"></label>
-                <input asp-for="citas" class="form-control" />
-                <span asp-validation-for="citas" class="text-danger"></span>
+            <div class="form-group mt-3">
+                <input type="submit"
+                       value="Crear"
+                       class="btn btn-primary" />
             </div>
 
-            <div class="form-group">
-                <label asp-for="IdTratimiento" class="control-label"></label>
-                <input asp-for="IdTratimiento" class="form-control" />
-                <span asp-validation-for="IdTratimiento" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Tratamiento" class="control-label"></label>
-                <input asp-for="Tratamiento" class="form-control" />
-                <span asp-validation-for="Tratamiento" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
         </form>
+
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver a la lista</a>
 </div>
