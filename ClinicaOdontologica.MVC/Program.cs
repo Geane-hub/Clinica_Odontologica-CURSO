@@ -8,6 +8,15 @@ namespace ClinicaOdontologica.MVC
         public static void Main(string[] args)
         {
             CRUD<Citas>.Endpoint = "https://localhost:7263/api/Citas";
+            CRUD<Consultorio>.Endpoint = "https://localhost:7263/api/Consultorios";
+            CRUD<Detallescita>.Endpoint = "https://localhost:7263/api/Detallescitas";
+            CRUD<Especialidad>.Endpoint = "https://localhost:7263/api/Especialidades";
+            CRUD<Facturas>.Endpoint = "https://localhost:7263/api/Facturas";
+            CRUD<HistorialMedico>.Endpoint = "https://localhost:7263/api/HistorialMedicos";
+            CRUD<Odontologo>.Endpoint = "https://localhost:7263/api/Odontologos";
+            CRUD<Paciente>.Endpoint = "https://localhost:7263/api/Pacientes";
+            CRUD<Receta>.Endpoint = "https://localhost:7263/api/Recetas";
+            CRUD<Tratamiento>.Endpoint = "https://localhost:7263/api/Tratamientos";
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.

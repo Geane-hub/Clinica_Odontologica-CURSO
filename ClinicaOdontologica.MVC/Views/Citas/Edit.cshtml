@@ -1,84 +1,131 @@
 @model Clinica_odontologia.Models01.Citas
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Cita";
 }
 
-<h1>Edit</h1>
+<h1>Editar Cita</h1>
 
-<h4>Citas</h4>
 <hr />
+
 <div class="row">
     <div class="col-md-4">
+
         <form asp-action="Edit">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <input type="hidden" asp-for="Id_cita" />
+
             <div class="form-group">
-                <label asp-for="Fecha_cita" class="control-label"></label>
+                <label asp-for="Fecha_cita" class="control-label">
+                    Fecha y hora
+                </label>
+
                 <input asp-for="Fecha_cita" class="form-control" />
-                <span asp-validation-for="Fecha_cita" class="text-danger"></span>
+
+                <span asp-validation-for="Fecha_cita"
+                      class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Motivo" class="control-label"></label>
+                <label asp-for="Motivo" class="control-label">
+                    Motivo
+                </label>
+
                 <input asp-for="Motivo" class="form-control" />
-                <span asp-validation-for="Motivo" class="text-danger"></span>
+
+                <span asp-validation-for="Motivo"
+                      class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Estado_cita" class="control-label"></label>
-                <input asp-for="Estado_cita" class="form-control" />
-                <span asp-validation-for="Estado_cita" class="text-danger"></span>
+                <label asp-for="Estado_cita" class="control-label">
+                    Estado
+                </label>
+
+                <select asp-for="Estado_cita" class="form-control">
+                    <option value="">Seleccione un estado</option>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="Confirmada">Confirmada</option>
+                    <option value="Atendida">Atendida</option>
+                    <option value="Cancelada">Cancelada</option>
+                </select>
+
+                <span asp-validation-for="Estado_cita"
+                      class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="IdPaciente" class="control-label"></label>
-                <input asp-for="IdPaciente" class="form-control" />
-                <span asp-validation-for="IdPaciente" class="text-danger"></span>
+                <label asp-for="IdPaciente" class="control-label">
+                    Paciente
+                </label>
+
+                <select asp-for="IdPaciente"
+                        class="form-control"
+                        asp-items="ViewBag.IdPaciente">
+
+                    <option value="">Seleccione un paciente</option>
+
+                </select>
+
+                <span asp-validation-for="IdPaciente"
+                      class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="paciciente" class="control-label"></label>
-                <input asp-for="paciciente" class="form-control" />
-                <span asp-validation-for="paciciente" class="text-danger"></span>
+                <label asp-for="IdOdontologo" class="control-label">
+                    Odontólogo
+                </label>
+
+                <select asp-for="IdOdontologo"
+                        class="form-control"
+                        asp-items="ViewBag.IdOdontologo">
+
+                    <option value="">Seleccione un odontólogo</option>
+
+                </select>
+
+                <span asp-validation-for="IdOdontologo"
+                      class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="IdOdontologo" class="control-label"></label>
-                <input asp-for="IdOdontologo" class="form-control" />
-                <span asp-validation-for="IdOdontologo" class="text-danger"></span>
+                <label asp-for="IdConsultorio" class="control-label">
+                    Consultorio
+                </label>
+
+                <select asp-for="IdConsultorio"
+                        class="form-control"
+                        asp-items="ViewBag.IdConsultorio">
+
+                    <option value="">Seleccione un consultorio</option>
+
+                </select>
+
+                <span asp-validation-for="IdConsultorio"
+                      class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
-                <label asp-for="odontologo" class="control-label"></label>
-                <input asp-for="odontologo" class="form-control" />
-                <span asp-validation-for="odontologo" class="text-danger"></span>
+                <input type="submit"
+                       value="Guardar cambios"
+                       class="btn btn-primary" />
             </div>
-            <div class="form-group">
-                <label asp-for="IdConsultorio" class="control-label"></label>
-                <input asp-for="IdConsultorio" class="form-control" />
-                <span asp-validation-for="IdConsultorio" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="consultorio" class="control-label"></label>
-                <input asp-for="consultorio" class="form-control" />
-                <span asp-validation-for="consultorio" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Detallescitas" class="control-label"></label>
-                <input asp-for="Detallescitas" class="form-control" />
-                <span asp-validation-for="Detallescitas" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Recetas" class="control-label"></label>
-                <input asp-for="Recetas" class="form-control" />
-                <span asp-validation-for="Recetas" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+
         </form>
+
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver a la lista</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

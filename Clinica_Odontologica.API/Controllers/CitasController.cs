@@ -21,6 +21,7 @@ public class CitasController : ControllerBase
             .Include(c => c.Recetas)
             .Include(c => c.odontologo)
             .Include(c => c.consultorio)
+            .Include(c => c.paciciente)
              .ToListAsync();
         return Ok(citas);
     }

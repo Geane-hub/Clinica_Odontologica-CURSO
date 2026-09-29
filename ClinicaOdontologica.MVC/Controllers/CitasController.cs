@@ -2,16 +2,33 @@
 using Clinica_odontologia.Models01;
 using ClinicaOdontologica.Consumer;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-
 public class CitasController : Controller
 {
 
 
     // GET: CITASS
-    public ActionResult Index()    
+    public ActionResult Index()
     {
-        var citas = CRUD<Citas> .GetAll();
+        var citas = CRUD<Citas>.GetAll();
+
+        var pacientes = CRUD<Paciente>.GetAll();
+        var odontologos = CRUD<Odontologo>.GetAll();
+        var consultorios = CRUD<Consultorio>.GetAll();
+
+        foreach (var cita in citas)
+        {
+            cita.paciciente = pacientes
+                .FirstOrDefault(p => p.IdPaciente == cita.IdPaciente);
+
+            cita.odontologo = odontologos
+                .FirstOrDefault(o => o.IdOdontologo == cita.IdOdontologo);
+
+            cita.consultorio = consultorios
+                .FirstOrDefault(c => c.IdConsultorio == cita.IdConsultorio);
+        }
+
         return View(citas);
     }
 
@@ -25,11 +42,32 @@ public class CitasController : Controller
         }
         return View(cita);
     }
-
     // GET: CITASS/Create
-    public ActionResult Create() //si no se crea nada
+    public ActionResult Create()
     {
-        return View(); //no retorna nada
+        var pacientes = CRUD<Paciente>.GetAll();
+        var odontologos = CRUD<Odontologo>.GetAll();
+        var consultorios = CRUD<Consultorio>.GetAll();
+
+        ViewData["IdPaciente"] = new SelectList(
+            pacientes,
+            "IdPaciente",
+            "Nombres"
+        );
+
+        ViewData["IdOdontologo"] = new SelectList(
+            odontologos,
+            "IdOdontologo",
+            "Nombre"
+        );
+
+        ViewData["IdConsultorio"] = new SelectList(
+            consultorios,
+            "IdConsultorio",
+            "Piso"
+        );
+
+        return View();
     }
 
     // POST: CITASS/Create
@@ -55,12 +93,40 @@ public class CitasController : Controller
     // GET: CITASS/Edit/5
     public ActionResult Edit(int id)
     {
-        var cita = CRUD < Citas > .GetById(id);
-        if(cita == null)
+        var cita = CRUD<Citas>.GetById(id);
+
+        if (cita == null)
         {
             return NotFound();
         }
+
+        CargarListas();
+
         return View(cita);
+    }
+    private void CargarListas()
+    {
+        var pacientes = CRUD<Paciente>.GetAll();
+        var odontologos = CRUD<Odontologo>.GetAll();
+        var consultorios = CRUD<Consultorio>.GetAll();
+
+        ViewData["IdPaciente"] = new SelectList(
+            pacientes,
+            "IdPaciente",
+            "Nombres"
+        );
+
+        ViewData["IdOdontologo"] = new SelectList(
+            odontologos,
+            "IdOdontologo",
+            "Nombre"
+        );
+
+        ViewData["IdConsultorio"] = new SelectList(
+            consultorios,
+            "IdConsultorio",
+            "Piso"
+        );
     }
 
     // POST: CITASS/Edit/5
@@ -72,12 +138,16 @@ public class CitasController : Controller
     {
         try
         {
-            CRUD<Citas>.Update(id,citas);
-            return RedirectToAction(nameof (Index));
+            CRUD<Citas>.Update(id, citas);
+
+            return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
         {
             ModelState.AddModelError("", ex.Message);
+
+            CargarListas();
+
             return View(citas);
         }
     }

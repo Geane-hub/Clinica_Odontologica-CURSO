@@ -69,17 +69,30 @@ namespace ClinicaOdontologica.Consumer
         {
             using (var cliente = new HttpClient())
             {
+                var json = JsonConvert.SerializeObject(item);
+
+                var contenido = new StringContent(
+                    json,
+                    Encoding.UTF8,
+                    "application/json"
+                );
+
                 var response = cliente.PutAsync(
                     $"{Endpoint}/{id}",
-                    new StringContent(JsonConvert.SerializeObject(item),
-                    Encoding.UTF8, "application/json")).Result;
+                    contenido
+                ).Result;
+
                 if (response.IsSuccessStatusCode)
                 {
                     return true;
                 }
                 else
                 {
-                    throw new Exception($"Error: {response.StatusCode} ");
+                    var error = response.Content.ReadAsStringAsync().Result;
+
+                    throw new Exception(
+                        $"Error {response.StatusCode}: {error}"
+                    );
                 }
             }
         }
