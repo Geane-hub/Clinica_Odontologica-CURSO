@@ -12,9 +12,9 @@ public class EspecialidadController : Controller
     }
 
     // GET: Especialidad/Details/5
-    public IActionResult Details(int id_especialidad)
+    public IActionResult Details(int id)
     {
-        var especialidad = CRUD<Especialidad>.GetById(id_especialidad);
+        var especialidad = CRUD<Especialidad>.GetById(id);
         if (especialidad == null)
         {
             return NotFound();
@@ -46,9 +46,9 @@ public class EspecialidadController : Controller
     }
 
     // GET: Especialidad/Edit/5
-    public ActionResult Edit(int id_especialidad)
+    public ActionResult Edit(int id)
     {
-        var especialidad = CRUD<Especialidad>.GetById(id_especialidad);
+        var especialidad = CRUD<Especialidad>.GetById(id);
         if (especialidad == null)
         {
             return NotFound();
@@ -59,11 +59,11 @@ public class EspecialidadController : Controller
     // POST: Especialidad/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id_especialidad, Especialidad especialidad)
+    public ActionResult Edit(int id, Especialidad especialidad)
     {
         try
         {
-            CRUD<Especialidad>.Update(id_especialidad, especialidad);
+            CRUD<Especialidad>.Update(id, especialidad);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
@@ -74,9 +74,9 @@ public class EspecialidadController : Controller
     }
 
     // GET: Especialidad/Delete/5
-    public ActionResult Delete(int id_especialidad)
+    public ActionResult Delete(int id)
     {
-        var especialidad = CRUD<Especialidad>.GetById(id_especialidad);
+        var especialidad = CRUD<Especialidad>.GetById(id);
         if (especialidad == null)
         {
             return NotFound();
