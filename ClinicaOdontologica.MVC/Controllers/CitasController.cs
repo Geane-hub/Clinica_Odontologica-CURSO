@@ -1,7 +1,8 @@
 
-using Microsoft.AspNetCore.Mvc;
-using ClinicaOdontologica.Consumer;
 using Clinica_odontologia.Models01;
+using ClinicaOdontologica.Consumer;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 public class CitasController : Controller
 {
@@ -102,7 +103,8 @@ public class CitasController : Controller
             CRUD<Citas>.Delete(id);
             return RedirectToAction(nameof(Index));
         }
-        catch (Exception ex){
+        catch (Exception ex)
+        {
             ModelState.AddModelError("", ex.Message);
             return View();
         }

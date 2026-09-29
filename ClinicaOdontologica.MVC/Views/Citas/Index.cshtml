@@ -1,7 +1,7 @@
 @model IEnumerable<Clinica_odontologia.Models01.Citas>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Gestión de Citas";
 }
 
 <h1>Index</h1>
@@ -9,80 +9,31 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-striped table-hover align-middle">
+    <thead class="table-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha_cita)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Motivo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado_cita)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdPaciente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.paciciente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdOdontologo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.odontologo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdConsultorio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.consultorio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Detallescitas)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Recetas)
-            </th>
-            <th></th>
-        </tr>
+            <th>Fecha y Hora</th>
+            <th>Motivo</th>
+            <th>Estado</th>
+            <th>Paciente</th>
+            <th>Odontologo</th>
+            <th>Consultorio</th>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>@item.Fecha_cita.ToString("dd/mm/yyyy HH:mm")</td>
+            <td>@item.Motivo</td>
             <td>
-                @Html.DisplayFor(model => item.Fecha_cita)
+                @(item.paciciente != null ? $"{item.paciciente.Nombres} {item.paciciente.Apellidos}" : "Sin Asignar");
             </td>
+
             <td>
-                @Html.DisplayFor(model => item.Motivo)
+                @(item.odontologo != null ? $"Dr.{item.odontologo.Nombre} {item.odontologo.Apellido}" : "Sin Asignar");
             </td>
+
             <td>
-                @Html.DisplayFor(model => item.Estado_cita)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.IdPaciente)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.paciciente)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.IdOdontologo)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.odontologo)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.IdConsultorio)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.consultorio)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Detallescitas)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Recetas)
+                @(item.consultorio != null ? item.consultorio.NumeroSala : "Sin Consultor");
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id_cita">Edit</a> |

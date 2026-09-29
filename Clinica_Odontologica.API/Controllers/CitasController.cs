@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Clinica_odontologia.Models01;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -14,9 +15,14 @@ public class CitasController : ControllerBase
 
     // GET: api/Citas (obtener todos los datos dentro de la tabla de bases)
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Citas>>> GetCitas()
+    public async Task<ActionResult> Index()
     {
-        return await _context.Citas.ToListAsync();
+        var citas = await _context.Citas
+            .Include(c => c.Recetas)
+            .Include(c => c.odontologo)
+            .Include(c => c.consultorio)
+             .ToListAsync();
+        return Ok(citas);
     }
 
     // GET: api/Citas/5 (traee datos especificos)

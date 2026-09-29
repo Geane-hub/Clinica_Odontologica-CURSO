@@ -1,3 +1,4 @@
+using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 namespace Clinica_Odontologica.API
 {
@@ -9,6 +10,10 @@ namespace Clinica_Odontologica.API
             var connectionString = builder.Configuration.GetConnectionString("Postgres") ?? throw new InvalidOperationException("Connection string 'Clinica_OdontologicaAPIContext' not found.");
 
             builder.Services.AddDbContext<Clinica_OdontologicaAPIContext>(options => options.UseNpgsql(connectionString));
+            builder.Services.AddControllers().AddNewtonsoftJson(Option =>
+            {
+                Option.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
 
             // Add services to the container.
 
