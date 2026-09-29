@@ -12,9 +12,9 @@ public class FacturaController : Controller
     }
 
     // GET: Factura/Details/5
-    public IActionResult Details(int id_factura)
+    public IActionResult Details(int id)
     {
-        var factura = CRUD<Facturas>.GetById(id_factura);
+        var factura = CRUD<Facturas>.GetById(id);
         if (factura == null)
         {
             return NotFound();
@@ -46,9 +46,9 @@ public class FacturaController : Controller
     }
 
     // GET: Factura/Edit/5
-    public ActionResult Edit(int id_factura)
+    public ActionResult Edit(int id)
     {
-        var factura = CRUD<Facturas>.GetById(id_factura);
+        var factura = CRUD<Facturas>.GetById(id);
         if (factura == null)
         {
             return NotFound();
@@ -59,11 +59,11 @@ public class FacturaController : Controller
     // POST: Factura/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id_factura, Facturas factura)
+    public ActionResult Edit(int id, Facturas factura)
     {
         try
         {
-            CRUD<Facturas>.Update(id_factura, factura);
+            CRUD<Facturas>.Update(id, factura);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
@@ -74,9 +74,9 @@ public class FacturaController : Controller
     }
 
     // GET: Factura/Delete/5
-    public ActionResult Delete(int id_factura)
+    public ActionResult Delete(int id)
     {
-        var factura = CRUD<Facturas>.GetById(id_factura);
+        var factura = CRUD<Facturas>.GetById(id);
         if (factura == null)
         {
             return NotFound();
@@ -87,11 +87,11 @@ public class FacturaController : Controller
     // POST: Factura/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id_factura, Facturas factura)
+    public ActionResult Delete(int id, Facturas factura)
     {
         try
         {
-            CRUD<Facturas>.Delete(id_factura);
+            CRUD<Facturas>.Delete(id);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
