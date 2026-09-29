@@ -40,6 +40,6 @@ namespace Clinica_odontologia.Models01
         [Column("telefono")]
         public string Telefono { get; set; }
 
-        List<Citas> Citas { get; set; } = new List<Citas>();
+        public List<Citas> Citas { get; set; } = new List<Citas>();
     }
 }

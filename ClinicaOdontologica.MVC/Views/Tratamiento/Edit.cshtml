@@ -1,0 +1,49 @@
+@model Clinica_odontologia.Models01.Tratamiento
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Tratamiento</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdTratamiento" />
+            <div class="form-group">
+                <label asp-for="NombreTratamiento" class="control-label"></label>
+                <input asp-for="NombreTratamiento" class="form-control" />
+                <span asp-validation-for="NombreTratamiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CostoBase" class="control-label"></label>
+                <input asp-for="CostoBase" class="form-control" />
+                <span asp-validation-for="CostoBase" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DuracionEstimadaMinutos" class="control-label"></label>
+                <input asp-for="DuracionEstimadaMinutos" class="form-control" />
+                <span asp-validation-for="DuracionEstimadaMinutos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Detallescitas" class="control-label"></label>
+                <input asp-for="Detallescitas" class="form-control" />
+                <span asp-validation-for="Detallescitas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

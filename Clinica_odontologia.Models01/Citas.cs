@@ -46,7 +46,7 @@ namespace Clinica_odontologia.Models01
         public Consultorio? consultorio { get; set; }
 
         //relaciones
-        List<Detallescita> Detallescitas { get; set; } = new List<Detallescita>();
-        List<Receta>? Recetas { get; set; } = new List<Receta>();
+        public List<Detallescita> Detallescitas { get; set; } = new List<Detallescita>();
+        public List<Receta>? Recetas { get; set; } = new List<Receta>();
     }
 }

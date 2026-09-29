@@ -26,6 +26,6 @@ namespace Clinica_odontologia.Models01
         public string EquipamientoPrincipal { get; set; }
 
         //relaciones (consultorios tiene una lista de citas)
-        List<Citas>? Citas { get; set; } = new List<Citas>();
+        public List<Citas>? Citas { get; set; } = new List<Citas>();
     }
 }
