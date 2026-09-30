@@ -1,6 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
-using ClinicaOdontologica.Consumer;
 using Clinica_odontologia.Models01;
+using ClinicaOdontologica.Consumer;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 public class HistorialMedicoController : Controller
 {
@@ -8,6 +9,14 @@ public class HistorialMedicoController : Controller
     public ActionResult Index()
     {
         var historialesMedicos = CRUD<HistorialMedico>.GetAll();
+        var pacientes = CRUD<Paciente>.GetAll();
+
+        foreach (var historialMedico in historialesMedicos)
+        {
+            historialMedico.paciente = pacientes
+                .FirstOrDefault(p => p.IdPaciente == historialMedico.IdPaciente);
+        }
+
         return View(historialesMedicos);
     }
 
@@ -25,6 +34,14 @@ public class HistorialMedicoController : Controller
     // GET: HistorialMedico/Create
     public ActionResult Create()
     {
+        var pacientes = CRUD<Paciente>.GetAll();
+
+        ViewBag.IdPaciente = new SelectList(
+            pacientes,
+            "IdPaciente",
+            "Nombres"
+        );
+
         return View();
     }
 
@@ -49,10 +66,21 @@ public class HistorialMedicoController : Controller
     public ActionResult Edit(int id)
     {
         var historialMedico = CRUD<HistorialMedico>.GetById(id);
+
         if (historialMedico == null)
         {
             return NotFound();
         }
+
+        var pacientes = CRUD<Paciente>.GetAll();
+
+        ViewBag.IdPaciente = new SelectList(
+            pacientes,
+            "IdPaciente",
+            "Nombres",
+            historialMedico.IdPaciente
+        );
+
         return View(historialMedico);
     }
 
@@ -63,12 +91,25 @@ public class HistorialMedicoController : Controller
     {
         try
         {
+            historialMedico.idHistorialMedico = id;
+
             CRUD<HistorialMedico>.Update(id, historialMedico);
+
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
         {
             ModelState.AddModelError("", ex.Message);
+
+            var pacientes = CRUD<Paciente>.GetAll();
+
+            ViewBag.IdPaciente = new SelectList(
+                pacientes,
+                "IdPaciente",
+                "Nombres",
+                historialMedico.IdPaciente
+            );
+
             return View(historialMedico);
         }
     }

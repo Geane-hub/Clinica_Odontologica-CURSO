@@ -1,59 +1,54 @@
 @model IEnumerable<Clinica_odontologia.Models01.HistorialMedico>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Historial Médico";
 }
 
-<h1>Index</h1>
+<h1>Historial Médico</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Crear nuevo</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Alergias)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Enfermedades_previas)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipo_sangre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdPaciente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.paciente)
-            </th>
-            <th></th>
+            <th>Alergias</th>
+            <th>Enfermedades previas</th>
+            <th>Tipo de sangre</th>
+            <th>Paciente</th>
+            <th>Acciones</th>
         </tr>
     </thead>
+
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(model => item.Alergias)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Enfermedades_previas)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Tipo_sangre)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.IdPaciente)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.paciente)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.idHistorialMedico">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.idHistorialMedico">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.idHistorialMedico">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Alergias
+                </td>
+
+                <td>
+                    @item.Enfermedades_previas
+                </td>
+
+                <td>
+                    @item.Tipo_sangre
+                </td>
+
+                <td>
+                    @(item.paciente != null
+                        ? $"{item.paciente.Nombres} {item.paciente.Apellidos}"
+                        : "Sin asignar")
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.idHistorialMedico">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.idHistorialMedico">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.idHistorialMedico">Eliminar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

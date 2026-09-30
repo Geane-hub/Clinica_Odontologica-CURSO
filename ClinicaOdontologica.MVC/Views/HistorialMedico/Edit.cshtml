@@ -11,35 +11,77 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="idHistorialMedico" />
+            <!-- Alergias -->
             <div class="form-group">
-                <label asp-for="Alergias" class="control-label"></label>
-                <input asp-for="Alergias" class="form-control" />
-                <span asp-validation-for="Alergias" class="text-danger"></span>
+                <label asp-for="Alergias" class="control-label">
+                    Alergias
+                </label>
+
+                <input asp-for="Alergias"
+                       class="form-control"
+                       placeholder="Ingrese las alergias" />
+
+                <span asp-validation-for="Alergias"
+                      class="text-danger"></span>
             </div>
+
+            <!-- Enfermedades previas -->
             <div class="form-group">
-                <label asp-for="Enfermedades_previas" class="control-label"></label>
-                <input asp-for="Enfermedades_previas" class="form-control" />
-                <span asp-validation-for="Enfermedades_previas" class="text-danger"></span>
+                <label asp-for="Enfermedades_previas" class="control-label">
+                    Enfermedades previas
+                </label>
+
+                <input asp-for="Enfermedades_previas"
+                       class="form-control"
+                       placeholder="Ingrese las enfermedades previas" />
+
+                <span asp-validation-for="Enfermedades_previas"
+                      class="text-danger"></span>
             </div>
+
+            <!-- Tipo de sangre -->
             <div class="form-group">
-                <label asp-for="Tipo_sangre" class="control-label"></label>
-                <input asp-for="Tipo_sangre" class="form-control" />
-                <span asp-validation-for="Tipo_sangre" class="text-danger"></span>
+                <label asp-for="Tipo_sangre" class="control-label">
+                    Tipo de sangre
+                </label>
+
+                <select asp-for="Tipo_sangre" class="form-control">
+                    <option value="">Seleccione el tipo de sangre</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+
+                <span asp-validation-for="Tipo_sangre"
+                      class="text-danger"></span>
             </div>
+
+            <!-- Paciente -->
+
             <div class="form-group">
-                <label asp-for="IdPaciente" class="control-label"></label>
-                <input asp-for="IdPaciente" class="form-control" />
-                <span asp-validation-for="IdPaciente" class="text-danger"></span>
+                <label asp-for="IdPaciente" class="control-label">
+                    Paciente
+                </label>
+
+                <select asp-for="IdPaciente"
+                        class="form-control"
+                        asp-items="ViewBag.IdPaciente">
+                    <option value="">Seleccione un paciente</option>
+                </select>
+
+                <span asp-validation-for="IdPaciente"
+                      class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <label asp-for="paciente" class="control-label"></label>
-                <input asp-for="paciente" class="form-control" />
-                <span asp-validation-for="paciente" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit"
+                       value="Guardar cambios"
+                       class="btn btn-success" />
             </div>
         </form>
     </div>
