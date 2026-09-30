@@ -1,60 +1,96 @@
 @model Clinica_odontologia.Models01.Odontologo
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear Odontólogo";
 }
 
-<h1>Create</h1>
+<h1>Crear Odontólogo</h1>
 
-<h4>Odontologo</h4>
+<h4>Odontólogo</h4>
 <hr />
+
 <div class="row">
     <div class="col-md-4">
+
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
-            </div>
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger"></div>
 
+            <!-- Nombre -->
             <div class="form-group">
-                <label asp-for="Apellido" class="control-label"></label>
-                <input asp-for="Apellido" class="form-control" />
-                <span asp-validation-for="Apellido" class="text-danger"></span>
-            </div>
+                <label asp-for="Nombre" class="control-label">
+                    Nombre
+                </label>
 
-            <div class="form-group">
-                <label asp-for="Registro_medico" class="control-label"></label>
-                <input asp-for="Registro_medico" class="form-control" />
-                <span asp-validation-for="Registro_medico" class="text-danger"></span>
+                <input asp-for="Nombre"
+                       class="form-control"
+                       placeholder="Ingrese el nombre" />
+
+                <span asp-validation-for="Nombre"
+                      class="text-danger"></span>
             </div>
 
+            <!-- Apellido -->
             <div class="form-group">
-                <label asp-for="IdEspecialidad" class="control-label"></label>
-                <input asp-for="IdEspecialidad" class="form-control" />
-                <span asp-validation-for="IdEspecialidad" class="text-danger"></span>
+                <label asp-for="Apellido" class="control-label">
+                    Apellido
+                </label>
+
+                <input asp-for="Apellido"
+                       class="form-control"
+                       placeholder="Ingrese el apellido" />
+
+                <span asp-validation-for="Apellido"
+                      class="text-danger"></span>
             </div>
 
+            <!-- Registro médico -->
             <div class="form-group">
-                <label asp-for="especialidad" class="control-label"></label>
-                <input asp-for="especialidad" class="form-control" />
-                <span asp-validation-for="especialidad" class="text-danger"></span>
+                <label asp-for="Registro_medico" class="control-label">
+                    Registro médico
+                </label>
+
+                <input asp-for="Registro_medico"
+                       class="form-control"
+                       placeholder="Ingrese el registro médico" />
+
+                <span asp-validation-for="Registro_medico"
+                      class="text-danger"></span>
             </div>
 
+            <!-- Especialidad -->
             <div class="form-group">
-                <label asp-for="Citas" class="control-label"></label>
-                <input asp-for="Citas" class="form-control" />
-                <span asp-validation-for="Citas" class="text-danger"></span>
+                <label asp-for="IdEspecialidad" class="control-label">
+                    Especialidad
+                </label>
+
+                <select asp-for="IdEspecialidad"
+                        class="form-control"
+                        asp-items="ViewBag.IdEspecialidad">
+
+                    <option value="">
+                        Seleccione una especialidad
+                    </option>
+
+                </select>
+
+                <span asp-validation-for="IdEspecialidad"
+                      class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit"
+                       value="Crear"
+                       class="btn btn-success" />
             </div>
+
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver a la lista</a>
 </div>

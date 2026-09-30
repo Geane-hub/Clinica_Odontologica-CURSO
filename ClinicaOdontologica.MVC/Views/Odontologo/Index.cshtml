@@ -12,47 +12,31 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Apellido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Registro_medico)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdEspecialidad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.especialidad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Citas)
-            </th>
-            <th></th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Registro medico</th>
+            <th>Especialidad</th>
+            <th>Cita</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(model => item.Nombre)
+                @(item.Nombre != null ? $"{item.Nombre}" : "Sin asignar")
             </td>
             <td>
-                @Html.DisplayFor(model => item.Apellido)
+                 @(item.Nombre != null ? $"{item.Apellido}" : "Sin asignar")
             </td>
             <td>
-                @Html.DisplayFor(model => item.Registro_medico)
+                  @(item.Registro_medico != null ? $"{item.Registro_medico}" : "Sin asignar")
             </td>
             <td>
-                @Html.DisplayFor(model => item.IdEspecialidad)
+                  @(item.especialidad.NombreEspecialidad != null ? $"{item.especialidad.NombreEspecialidad}" : "Sin asignar")
+
             </td>
             <td>
-                @Html.DisplayFor(model => item.especialidad)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Citas)
+                    @item.Citas?.FirstOrDefault()?.Motivo
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdOdontologo">Edit</a> |
