@@ -1,64 +1,57 @@
 @model Clinica_odontologia.Models01.Facturas
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles de la factura";
 }
 
-<h1>Details</h1>
+<h1>Detalles de la factura</h1>
 
 <div>
     <h4>Facturas</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Fecha_emision)
+        <dt class="col-sm-2">
+            Fecha de emision
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Fecha_emision)
+        <dd class="col-sm-10">
+            @Model.Fecha_emision.ToString("dd/MM/yyyy HH:mm")
         </dd>
     </dl>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Subtotal)
+            Subtotal
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Subtotal)
+            @Model.Subtotal
         </dd>
     </dl>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Impuestos)
+            Impuesto
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Impuestos)
+            @Model.Impuestos
         </dd>
     </dl>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Total)
+            Total
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Total)
+            @Model.Total
         </dd>
     </dl>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Estado_pago)
+            Estado_pago
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Estado_pago)
+            @Model.Estado_pago
         </dd>
     </dl>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdCita)
+            Citas
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdCita)
+            @(Model.citas != null && Model.citas.paciciente != null ? Model.citas.paciciente.Nombres : "Sin asignar")
         </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.citas)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.citas)
-        </dd>
-    </dl>
+
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.IdFactura">Edit</a> |

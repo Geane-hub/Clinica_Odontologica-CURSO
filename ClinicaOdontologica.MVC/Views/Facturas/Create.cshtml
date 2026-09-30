@@ -19,40 +19,86 @@
                 <span asp-validation-for="Fecha_emision" class="text-danger"></span>
             </div>
 
+            <!--Subtotal-->
             <div class="form-group">
-                <label asp-for="Subtotal" class="control-label"></label>
-                <input asp-for="Subtotal" class="form-control" />
-                <span asp-validation-for="Subtotal" class="text-danger"></span>
+                <label asp-for="Subtotal" class="control-label">
+                    Subtotal
+                </label>
+
+                <input asp-for="Subtotal"
+                       type="number"
+                       step="0.01"
+                       min="0"
+                       class="form-control" />
+
+                <span asp-validation-for="Subtotal"
+                      class="text-danger"></span>
             </div>
 
+            <!--Impuestos-->
             <div class="form-group">
-                <label asp-for="Impuestos" class="control-label"></label>
-                <input asp-for="Impuestos" class="form-control" />
-                <span asp-validation-for="Impuestos" class="text-danger"></span>
+                <label asp-for="Impuestos" class="control-label">
+                    Impuesto
+                </label>
+
+                <input asp-for="Impuestos"
+                       type="number"
+                       step="0.01"
+                       min="0"
+                       class="form-control" />
+
+                <span asp-validation-for="Impuestos"
+                      class="text-danger"></span>
             </div>
 
+            <!--Total-->
             <div class="form-group">
-                <label asp-for="Total" class="control-label"></label>
-                <input asp-for="Total" class="form-control" />
-                <span asp-validation-for="Total" class="text-danger"></span>
+                <label asp-for="Total" class="control-label">
+                    Total
+                </label>
+
+                <input asp-for="Total"
+                       type="number"
+                       step="0.01"
+                       min="0"
+                       class="form-control" />
+
+                <span asp-validation-for="Total"
+                      class="text-danger"></span>
             </div>
 
+            <!--Estado de pago-->
             <div class="form-group">
-                <label asp-for="Estado_pago" class="control-label"></label>
-                <input asp-for="Estado_pago" class="form-control" />
-                <span asp-validation-for="Estado_pago" class="text-danger"></span>
+                <label asp-for="Estado_pago" class="control-label">
+                    Estado de pago
+                </label>
+
+                <select asp-for="Estado_pago" class="form-control">
+                    <option value="">Seleccione un estado</option>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="Confirmada">Acreditado</option>
+                    <option value="Atendida">Rechazado</option>
+                </select>
+
+                <span asp-validation-for="Estado_pago"
+                      class="text-danger"></span>
             </div>
 
+            <!--IDcita-->
             <div class="form-group">
-                <label asp-for="IdCita" class="control-label"></label>
-                <input asp-for="IdCita" class="form-control" />
+                <label asp-for="IdCita" class="control-label">
+                    Cita
+                </label>
+
+                <select asp-for="IdCita"
+                        class="form-control"
+                        asp-items="ViewBag.IdCita">
+
+                    <option value="">Seleccione una cita</option>
+
+                </select>
+
                 <span asp-validation-for="IdCita" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="citas" class="control-label"></label>
-                <input asp-for="citas" class="form-control" />
-                <span asp-validation-for="citas" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

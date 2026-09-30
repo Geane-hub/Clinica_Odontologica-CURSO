@@ -1,13 +1,22 @@
-using Microsoft.AspNetCore.Mvc;
-using ClinicaOdontologica.Consumer;
 using Clinica_odontologia.Models01;
+using ClinicaOdontologica.Consumer;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
-public class FacturaController : Controller
+public class FacturasController : Controller
 {
     // GET: Factura
     public ActionResult Index()
     {
         var facturas = CRUD<Facturas>.GetAll();
+        var citas = CRUD<Citas>.GetAll();
+
+        foreach (var factura in facturas)
+        {
+            factura.citas = citas
+                .FirstOrDefault(c => c.Id_cita == factura.IdCita);
+        }
+
         return View(facturas);
     }
 
@@ -19,12 +28,30 @@ public class FacturaController : Controller
         {
             return NotFound();
         }
+
+        // Cargar los datos de la Cita asociada para mostrar la información del paciente
+        if (factura.IdCita != null)
+        {
+            var citas = CRUD<Citas>.GetAll() ?? new List<Citas>();
+            factura.citas = citas.FirstOrDefault(c => c.Id_cita == factura.IdCita);
+        }
+
         return View(factura);
     }
 
     // GET: Factura/Create
     public ActionResult Create()
     {
+        // 1. Asignar el endpoint del servicio para Citas (ajusta la URL según tu API)
+        CRUD<Citas>.Endpoint = "https://localhost:7263/api/Citas";
+
+        // 2. Obtener la lista mediante tu clase CRUD
+        var citas = CRUD<Citas>.GetAll() ?? new List<Citas>();
+
+        // 3. Crear la SelectList pasando la lista y las propiedades correctas
+        // Guardamos en "IdCita" para coincidir con la vista
+        ViewData["IdCita"] = new SelectList(citas, "Id_cita", "Motivo");
+
         return View();
     }
 
