@@ -12,54 +12,40 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Dni)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombres)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Apellidos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaNacimiento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefono)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Citas)
-            </th>
-            <th></th>
+            <th>Dni</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Fecha naciemiento</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Cita</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(model => item.Dni)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Nombres)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Apellidos)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.FechaNacimiento)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Citas)
-            </td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Dni
+                </td>
+                <td>
+                    @item.Nombres
+                </td>
+                <td>
+                    @item.Apellidos
+                </td>
+                <td>
+                    @item.FechaNacimiento.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @item.Telefono
+                </td>
+                <td>
+                    @(item.Citas != null ? $"{item.Citas.Count().ToString()}" : "Sin asignar")
+                </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdPaciente">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.IdPaciente">Details</a> |
